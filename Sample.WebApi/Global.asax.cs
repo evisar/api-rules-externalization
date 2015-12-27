@@ -18,7 +18,8 @@ namespace Sample.WebApi
             {
                 config.MapHttpAttributeRoutes();
 
-                config.Filters.Add(new RuleFilterAttribute());
+                //config.Filters.Add(new RuleFilterAttribute());
+                UnityConfig.RegisterComponents();
 
                 config.Routes.MapHttpRoute(
                     name: "api",

@@ -1,4 +1,5 @@
-﻿using Rules.Common;
+﻿using Domain.Common;
+using Sample.Domain.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,14 @@ namespace Sample.Domain.Rules
 {
     public class SaleDWNumberUniqueRule: IRule<Sale>
     {
-        public bool Apply(string method, Sale item)
+        readonly SalesDomain _domain;
+        public SaleDWNumberUniqueRule(SalesDomain domain)
         {
-            throw new NotImplementedException();
+            _domain = domain;
+        }
+        public bool Apply(Sale item)
+        {
+            return _domain.IsDWNUmberUnique(item.DWNumber);
         }
     }
 }

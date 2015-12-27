@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F7F8E992-F8FE-4261-AEBA-4D0DEB2EDC00}</ProjectGuid>
+    <ProjectGuid>{D38A1E27-0256-455C-BFDB-AB6A8C897277}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sample.Domain</RootNamespace>
-    <AssemblyName>Sample.Domain</AssemblyName>
+    <RootNamespace>Domain.Common</RootNamespace>
+    <AssemblyName>Domain.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,17 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domains\SalesDomain.cs" />
-    <Compile Include="Rules\SaleDWNumberUniqueRule.cs" />
-    <Compile Include="Sale.cs" />
+    <Compile Include="IDomain.cs" />
+    <Compile Include="IEvent.cs" />
+    <Compile Include="IRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaleItem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain.Common\Domain.Common.csproj">
-      <Project>{d38a1e27-0256-455c-bfdb-ab6a8c897277}</Project>
-      <Name>Domain.Common</Name>
-    </ProjectReference>
+    <Compile Include="Rules\RuleFilter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

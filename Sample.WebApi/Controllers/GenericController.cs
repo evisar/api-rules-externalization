@@ -1,7 +1,10 @@
-﻿using Sample.Domain;
+﻿using Domain.Common;
+using Newtonsoft.Json;
+using Sample.Domain;
 using Sample.WebApi.Rules;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,6 +15,14 @@ namespace Sample.WebApi
     public class GenericController<T> : ApiController
         where T: class
     {
+
+        internal IDomain<T> Domain { get; private set; }
+
+        public GenericController(IDomain<T> domain)
+        {
+            this.Domain = domain;
+        }
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
@@ -26,12 +37,13 @@ namespace Sample.WebApi
 
         [RuleFilter]
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody]T value)
         {
+            this.Domain.Save(value);            
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]T value)
         {
         }
 
